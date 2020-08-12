@@ -1,11 +1,10 @@
 <template>
   <div id="app">
     <header>
-      <HeaderInfo ></HeaderInfo>
+      <HeaderInfo></HeaderInfo>
       <MenuPanel :menuData="menu"></MenuPanel>
-      <div class="slider">
-        <img src="./assets/images/slide_1.jpg" alt="">
-      </div>
+      <Slider class="slider"></Slider>
+
     </header>
     <main>main</main>
     <footer>footer</footer>
@@ -15,6 +14,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import MenuPanel from './components/MenuPanel.vue';
+import Slider from './components/Slider.vue';
 import HeaderInfo from './components/HeaderInfo.vue';
 import { menu as menuData } from './data';
 
@@ -22,6 +22,7 @@ import { menu as menuData } from './data';
   components: {
     HeaderInfo,
     MenuPanel,
+    Slider,
   },
 })
 export default class App extends Vue {
@@ -33,24 +34,29 @@ export default class App extends Vue {
 <style lang="scss">
   #app {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     min-height: 100vh;
   }
+
   header {
     width: 100%;
-    .menu{
+
+    .menu {
 
     }
-    .slider{
+
+    .slider {
       width: 100%;
       overflow: hidden;
       text-align: center;
     }
   }
+
   main {
     background: #b7b918;
     flex-grow: 1;
   }
+
   footer {
     background: #b9afb7;
   }
