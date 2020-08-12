@@ -27,6 +27,7 @@ export default {
    overflow: hidden;
    position: absolute;
    background-position: center;
+    background-repeat: no-repeat;
 
    img {
      min-width: 100%;

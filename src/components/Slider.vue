@@ -15,7 +15,9 @@
             class="nav-indicator__item"
             :class="index===activeSlide?'nav-indicator__item_active':''"
             @click="setSlide(index)"
-          ></div>
+          >
+            <div class="nav-indicator__line"></div>
+          </div>
         </div>
         <div class="next" @click="next()">next</div>
       </div>
@@ -97,16 +99,19 @@
  .nav-indicator {
    display: flex;
  }
-
- .nav-indicator__item {
+//линия тонкая, добавляем кликабельное пространство вокруг
+ .nav-indicator__item{
+   padding: 10px;
+ }
+ .nav-indicator__line{
    width: 70px;
    height: 6px;
    background: #F7F7F7;
-   margin-right: 30px;
+   margin-right: 10px;
    opacity: 1;
  }
 
- .nav-indicator__item_active {
+ .nav-indicator__item_active  .nav-indicator__line {
    background: #14A5DA;
  }
 
