@@ -8,8 +8,14 @@ body {
 }
 
 .container {
-  width: 1171px;
+  width: 90%;
   margin: auto;
+  @media screen and (min-width: 1300px){
+
+    width: 1171px;
+
+  }
+
 }
 
 .flex {
@@ -21,4 +27,11 @@ body {
       }
     }
   }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }

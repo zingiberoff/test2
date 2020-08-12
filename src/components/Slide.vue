@@ -1,9 +1,11 @@
 <template>
-  <a :href="slide.href" class="slide" :style="sliderstyle">
 
+  <a :href="slide.href" :style="sliderstyle" class="slide">
+<div class="container">
         <div class="topic">{{slide.topic}}</div>
         <div class="title">{{slide.title}}</div>
         <div class="description">{{slide.description}}</div>
+</div>
   </a>
 </template>
 
@@ -12,7 +14,7 @@ export default {
   name: 'Slide',
   props: ['slide'],
   computed: {
-    sliderstyle () {
+    sliderstyle() {
       return { 'background-image': 'url(' + this.slide.img + ')' };
     },
   }
@@ -27,13 +29,11 @@ export default {
    overflow: hidden;
    position: absolute;
    background-position: center;
-    background-repeat: no-repeat;
+   background-repeat: no-repeat;
+   color: white;
+   text-decoration: none;
 
-   img {
-     min-width: 100%;
-   }
-
-   .topic{
+   .topic {
      padding: 6px 14px;
      background: #14A5DA;
      text-transform: uppercase;
@@ -41,8 +41,12 @@ export default {
      display: inline-block;
      margin-top: 116px;
    }
-   .title{
-     font-size: 46px/54px;
+
+   .title {
+     font-size: 46px;
+   }
+   @media screen and (min-width: 1920px){
+     background-size: 100%;
    }
  }
 </style>

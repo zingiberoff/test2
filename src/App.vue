@@ -3,7 +3,7 @@
     <header>
       <HeaderInfo></HeaderInfo>
       <MenuPanel :menuData="menu"></MenuPanel>
-      <Slider class="slider"></Slider>
+      <Slider></Slider>
 
     </header>
     <main>main</main>
@@ -46,15 +46,14 @@ export default class App extends Vue {
     }
 
     .slider {
-      width: 100%;
-      overflow: hidden;
-      text-align: center;
+
     }
   }
 
   main {
     background: #b7b918;
     flex-grow: 1;
+    height: 2000px;
   }
 
   footer {

@@ -13,7 +13,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class HelloWorld extends Vue {
+export default class HeaderInfo extends Vue {
 }
 </script>
 

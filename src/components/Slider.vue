@@ -1,25 +1,25 @@
 <template>
-  <div class="slider" >
-    <transition name="fade" mode="in-out">
+  <div class="slider">
+    <transition mode="in-out" name="fade">
       <template v-for="(slide,index) in slides">
-        <slide v-if="index==activeSlide" :key="index" :slide="slide"/>
+        <slide :key="index" :slide="slide" v-if="index==activeSlide"/>
       </template>
     </transition>
     <div class="slider_navbar">
       <div class="container flex flex_justify-between">
-        <div class="prev" @click="prev()">prev</div>
+        <img @click="prev()" alt="Предыдущий слайд" class="arrow arrow_prev" src="../assets/images/left-arrow.svg"/>
         <div class="nav-indicator">
           <div
-            :key="index"
-            v-for="(slide,index) in this.slides"
-            class="nav-indicator__item"
             :class="index===activeSlide?'nav-indicator__item_active':''"
+            :key="index"
             @click="setSlide(index)"
+            class="nav-indicator__item"
+            v-for="(slide,index) in this.slides"
           >
             <div class="nav-indicator__line"></div>
           </div>
         </div>
-        <div class="next" @click="next()">next</div>
+        <img @click="next()" alt="Следующий слайд" class="arrow arrow_next" src="../assets/images/left-arrow.svg"/>
       </div>
     </div>
   </div>
@@ -31,9 +31,16 @@
   export default {
     components: { Slide },
     name: 'Slider',
+    props: {
+      duration: {
+        type: Number,
+        default: 5000
+      }
+    },
     data() {
       return {
         activeSlide: 0,
+        isAutoScroll: true,
         slides: [
           {
             img: '/img/slide_1.jpg',
@@ -59,8 +66,26 @@
         ],
       };
     },
-    computed: {},
     methods: {
+      toggleAutoScrol() {
+        this.isAutoScroll = !this.isAutoScroll;
+        this.setAutoScrol();
+      },
+      setAutoScrol() {
+        if (this.isAutoScroll) {
+          this.enableAutoScrol()
+        } else {
+          this.disableAutoScrol()
+        }
+      },
+      enableAutoScrol() {
+        this.timer = setInterval(() => {
+          this.next()
+        }, this.duration)
+      },
+      disableAutoScrol() {
+        clearInterval(this.timer)
+      },
       prev() {
         if (this.activeSlide > 0) {
           this.activeSlide--;
@@ -75,11 +100,15 @@
           this.activeSlide = 0;
         }
       },
-      setSlide(index){
+      setSlide(index) {
         this.activeSlide = index;
       }
     },
-  };
+    beforeMount() {
+      this.setAutoScrol()
+    },
+  }
+  ;
 </script>
 
 <style scoped>
@@ -99,28 +128,27 @@
  .nav-indicator {
    display: flex;
  }
-//линия тонкая, добавляем кликабельное пространство вокруг
- .nav-indicator__item{
+
+ .nav-indicator__item {
    padding: 10px;
+   margin: -10px;
  }
- .nav-indicator__line{
+
+ .nav-indicator__line {
    width: 70px;
    height: 6px;
    background: #F7F7F7;
-   margin-right: 10px;
+   margin-right: 30px;
    opacity: 1;
  }
 
- .nav-indicator__item_active  .nav-indicator__line {
+ .arrow_prev {
+   transform: rotate(180deg);
+ }
+
+ .nav-indicator__item_active .nav-indicator__line {
    background: #14A5DA;
  }
 
- .fade-enter-active, .fade-leave-active {
-   transition: opacity .5s;
- }
 
- .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */
- {
-   opacity: 0;
- }
 </style>
