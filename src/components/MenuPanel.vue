@@ -1,5 +1,5 @@
 <template>
-  <div :style="{'min-height': height+'px'}">
+  <div :style="{'min-height': height+'px'}" >
     <div id="header_info"
          class="header_info">
       <div class="container">
@@ -9,7 +9,7 @@
     <div :class="{ 'MenuPanel_fixed': fixed ,'MenuPanel-side':showSidebar}" class="MenuPanel" id="MenuPanel">
       <div class="container MenuPanel__content">
       <div class="MenuPanel__logo-container">
-          <div class="MenuPanel__logo">Logotype</div>
+          <div class="MenuPanel__logo logo">Logotype</div>
           <div class="MenuPanel__burger" @click="showSidebar=!showSidebar">
             <img v-if="!showSidebar" src="../assets/images/burger.svg" alt="">
             <img v-else src="../assets/images/close.svg" alt="">
@@ -17,8 +17,8 @@
         </div>
         <Menu class="MenuPanel__menu" :menuData="menuData"/>
         <div class="MenuPanel__user">
-          <div>Регистрация</div>
-          <div>Вход</div>
+           <a href="/register">Регистрация</a>
+          <a href="/login">Вход</a>
         </div>
 
       </div>
@@ -29,8 +29,8 @@
     <div class="container">
         <MobileMenu :menuData="menuData"/>
       <div class="sidebar__user">
-          <div>Регистрация</div>
-          <div>Вход</div>
+          <a href="/register">Регистрация</a>
+          <a href="/login">Вход</a>
         </div>
       </div>
        <Info></Info>
@@ -67,8 +67,7 @@ export default {
     this.$nextTick(() => {
       const menuPanelElement = this.$el.children.MenuPanel;
       const menuPanelElementOffset = menuPanelElement.offsetTop;
-      console.log(menuPanelElementOffset);
-      this.height = this.$el.scrollHeight;
+      this.height = Math.max(55,this.$el.scrollHeight);
       window.addEventListener('scroll', () => {
         this.fixed = window.pageYOffset > menuPanelElementOffset;
       });
@@ -91,6 +90,9 @@ export default {
 
     &__user {
       display: flex;
+      a{
+        margin-right: 20px;
+      }
     }
 
     &__burger {
@@ -105,8 +107,14 @@ export default {
   }
 
   @media screen and (max-width: 640px) {
-    .MenuPanel {
 
+    .header_info {
+      display: none;
+    }
+    .MenuPanel {
+      position: fixed;
+      z-index: 200;
+      top: 0;
       padding: 15px 0 15px;
 
       &__menu, &__user {
@@ -133,7 +141,18 @@ export default {
 
   }
 
-
+  .sidebar__user{
+    font-weight: bolder;
+    display: flex;
+    margin-top: 95px;
+    margin-bottom: 40px;
+    flex-direction: column;
+    a{
+      color: black;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+  }
 
   .header_info {
     padding: 11px 0;

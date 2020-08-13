@@ -5,6 +5,7 @@
         <li :key="index"
             @click="toggle(index, $event)"
             v-for="(item, index) in menuData"
+            onblur="activeItem=false"
             :class="{active:activeItem === index}">
         <a :href="item.href">{{ item.title }}</a>
 

@@ -1,6 +1,8 @@
 <template>
 
       <div class="news">
+        <h2><a href="/news">Новости</a></h2>
+
           <div class="row">
               <div :class="(index+1)%3?' col-md-6': 'col-md-12'" class="col-12 news__item"
                    v-for="(newsItem, index) in showItems">
@@ -68,6 +70,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  h2 {
+    font-size: 32px;
+    text-transform: uppercase;
+  }
   .news__list {
     display: flex;
   }
@@ -107,6 +113,9 @@ export default {
     }
   }
   @media (screen and max-width: 600px){
+    h2{
+      font-size: 16px;
+    }
     .news__item{
       img{
         height: 100%;

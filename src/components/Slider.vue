@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       activeSlide: 0,
-      isAutoScroll: true,
+      isAutoScroll: false,
       slides: [
         {
           img: '/img/slide_1.jpg',
@@ -123,6 +123,7 @@ export default {
 
 <style scoped>
  .slider {
+   transition: all .5s ease-in-out;
    height: 600px;
    width: 100%;
    overflow: hidden;
@@ -130,6 +131,7 @@ export default {
  }
 
  .slider_navbar {
+   transition: all .5s ease-in-out;
    position: absolute;
    bottom: 50px;
    width: 100%;
@@ -145,6 +147,7 @@ export default {
  }
 
  .nav-indicator__line {
+   transition: all .5s ease-in-out;
    width: 70px;
    height: 6px;
    background: #F7F7F7;
@@ -168,5 +171,36 @@ export default {
    opacity: 0;
  }
 
+ @media screen and (max-width: 960px) {
+   .slider {
+     height: 400px;
+     width: 100%;
+     overflow: hidden;
+     position: relative;
+   }
+   .slider_navbar {
+     bottom: 20px;
+   }
+ }
+
+ @media screen and (max-width: 600px) {
+   .slider {
+     height: 240px;
+     width: 100%;
+     overflow: hidden;
+     position: relative;
+   }
+   .slider_navbar {
+     bottom: 10px;
+   }
+   .nav-indicator__line {
+     height: 2px;
+     width: 30px;
+   }
+   .arrow{
+     width: 17px;
+     height: auto;
+   }
+ }
 
 </style>

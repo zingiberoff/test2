@@ -1,5 +1,5 @@
 <template>
-  <div class="subscribeForm">
+  <div class="subscribeForm" v-if="!formSubmited">
     <form @submit.prevent="submitForm" action="">
       <h3 class="form-title">
           подпишитесь на рассылку
@@ -42,8 +42,14 @@
                     v-model='comment.value'></textarea>
         </div>
       </div>
-      <button :disabled="!formValid" type="submit" class="subscribe">Подписаться</button>
+      <button :disabled="!formValid" class="subscribe" type="submit">Подписаться</button>
     </form>
+  </div>
+  <div class="success" v-else>
+      <img alt="спасибо за подписку" src="../assets/images/done.svg">
+      <div class="title">
+      Уважаемый, {{name.value}}, спасибо за подписку!
+      </div>
   </div>
 </template>
 
@@ -67,7 +73,12 @@ export default {
   },
   methods: {
     submitForm() {
-      this.formSubmited = this.checkForm();
+      if (this.checkForm()) {
+        //имитируем запрос на сервер
+        setTimeout(() => {
+          this.formSubmited = true;
+        }, 1000)
+      }
     },
     checkForm() {
       console.log('checkForm');
@@ -134,7 +145,8 @@ export default {
      text-transform: uppercase;
      text-align: center;
    }
-   .subscribe{
+
+   .subscribe {
      max-width: 270px;
      width: 100%;
      background: #14A5DA;
@@ -148,7 +160,8 @@ export default {
      border-radius: 2px;
    }
  }
- @media (screen and max-width: 600px){
+
+ @media (screen and max-width: 600px) {
    form {
      max-width: 220px;
    }
@@ -183,4 +196,32 @@ export default {
      }
    }
  }
+
+ .success {
+   width: 100%;
+   height: 380px;
+   background: white;
+   box-shadow: 0px 0px 10px #00000029;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 20px;
+   text-align: center;
+   font-size: 20px;
+   .title {
+     margin-top: 25px;
+   }
+   img {
+     display: block;
+   }
+
+   @media (screen and max-width: 600px) {
+     font-size: 12px;
+     .title {
+       margin-top: 14px;
+     }
+   }
+ }
+
 </style>

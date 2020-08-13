@@ -71,6 +71,5 @@ export default class App extends Vue {
 
   footer {
     background: #b9afb7;
-    height: 200px;
   }
 </style>

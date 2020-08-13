@@ -13,11 +13,12 @@
 <style scoped>
   .Sidebar {
     position: fixed;
-    top: 100;
+    top: 52px;
     left: 0;
     z-index: 210;
     background: white;
     width: 100vw;
     height: 100vh;
+    text-align: center;
   }
 </style>
