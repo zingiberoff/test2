@@ -45,9 +45,11 @@ export default class Menu extends Vue {
     console.log(index, this.activeItem);
     //if (index == this.activeItem) return;
     this.activeItem = index;
-    let item = this.menuData[index];
+    const item = this.menuData[index];
     if (item.children?.length) {
-      this.submenuOffsetLeft = event.target.offsetLeft
+      console.log(event);
+      const target = event.target as HTMLElement;
+      this.submenuOffsetLeft = target.offsetLeft;
       this.submenu = item.children;
       this.showSubmenu = true;
 

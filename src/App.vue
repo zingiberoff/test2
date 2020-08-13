@@ -5,7 +5,12 @@
       <Slider></Slider>
 
     </header>
-    <main>main</main>
+    <main>
+      <div class="container">
+        <About></About>
+        <News></News>
+      </div>
+    </main>
     <footer>footer</footer>
   </div>
 </template>
@@ -14,6 +19,8 @@
 import { Component, Vue } from 'vue-property-decorator';
 import MenuPanel from './components/MenuPanel.vue';
 import Slider from './components/Slider.vue';
+import About from './components/About.vue';
+import News from './components/News.vue';
 import HeaderInfo from './components/HeaderInfo.vue';
 import { menu as menuData } from './data';
 
@@ -22,6 +29,8 @@ import { menu as menuData } from './data';
     HeaderInfo,
     MenuPanel,
     Slider,
+    About,
+    News,
   },
 })
 export default class App extends Vue {
@@ -51,9 +60,7 @@ export default class App extends Vue {
   }
 
   main {
-    background: #b7b918;
     flex-grow: 1;
-    height: 2000px;
   }
 
   footer {

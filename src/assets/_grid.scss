@@ -1,0 +1,63 @@
+$gap: 30px;
+$columns: 12;
+$breakpoints: (
+        xs: (max:600),
+        sm: (min:600 ),
+        md: (min:960 ),
+        lg: (min:1264),
+        xl: (min:1904)
+);
+
+.row {
+  display: flex;
+  margin: 0 (-$gap/2);
+  flex-wrap: wrap;
+}
+
+@function get-media($size) {
+  $result: '';
+  $max: map-get($size, 'max');
+  $min: map-get($size, 'min');
+
+  @if $min {
+    $result: 'min-width: ' + $min + px;
+    @if $max {
+      $result: $result + ' and '
+    }
+  }
+  @if $max {
+    $result: $result +'max-width: ' + $max + px
+  }
+  @return $result ;
+}
+
+@for $i from 1 through $columns {
+  .col-#{$i} {
+    $width: (100% / $columns) * $i;
+    margin: 0 ($gap/2);
+    box-sizing: border-box;
+    flex-basis: calc(#{$width} - #{$gap});
+  }
+
+}
+@media screen {
+  @each $breakpoint, $size in $breakpoints {
+    @media (#{get-media($size)}) {
+
+
+      @for $i from 1 through $columns {
+        .col-#{$breakpoint}-#{$i} {
+          $width: (100% / $columns) * $i;
+          margin: 0 ($gap/2);
+          box-sizing: border-box;
+          flex-basis: calc(#{$width} - #{$gap});
+          overflow: hidden;
+          content: '#{get-media($size)}';
+
+        }
+
+      }
+    }
+  }
+
+}
