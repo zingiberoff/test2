@@ -21,8 +21,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { MenuItem } from '../interfaces'
-
+import { MenuItem } from '../interfaces';
 
 @Component
 export default class Menu extends Vue {

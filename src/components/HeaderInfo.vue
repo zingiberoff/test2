@@ -19,7 +19,6 @@ export default class HeaderInfo extends Vue {
 
 <style scoped>
   .MenuPanel {
-    padding: 11px 0;
-    background: #DCE5E9;
+
   }
 </style>

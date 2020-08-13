@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <header>
-      <HeaderInfo></HeaderInfo>
       <MenuPanel :menuData="menu"></MenuPanel>
       <Slider></Slider>
 
@@ -27,6 +26,7 @@ import { menu as menuData } from './data';
 })
 export default class App extends Vue {
   menu = menuData;
+  showSidebar = false;
 }
 </script>
 
