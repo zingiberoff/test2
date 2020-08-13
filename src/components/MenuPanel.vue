@@ -76,7 +76,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .MenuPanel {
     background: white;
     width: 100%;
@@ -133,11 +133,7 @@ export default {
 
   }
 
-  .logo {
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
+
 
   .header_info {
     padding: 11px 0;

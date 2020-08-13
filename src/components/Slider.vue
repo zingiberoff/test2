@@ -160,5 +160,13 @@ export default {
    background: #14A5DA;
  }
 
+ .fade-enter-active, .fade-leave-active {
+   transition: opacity .5s;
+ }
+
+ .fade-enter, .fade-leave-to {
+   opacity: 0;
+ }
+
 
 </style>

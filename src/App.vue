@@ -9,17 +9,21 @@
       <div class="container">
         <About></About>
         <News></News>
+        <SubscribeForm></SubscribeForm>
       </div>
     </main>
-    <footer>footer</footer>
+
+      <AppFooter></AppFooter>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import MenuPanel from './components/MenuPanel.vue';
+import SubscribeForm from './components/SubscribeForm.vue';
 import Slider from './components/Slider.vue';
 import About from './components/About.vue';
+import AppFooter from './components/Footer.vue';
 import News from './components/News.vue';
 import HeaderInfo from './components/HeaderInfo.vue';
 import { menu as menuData } from './data';
@@ -31,6 +35,8 @@ import { menu as menuData } from './data';
     Slider,
     About,
     News,
+    SubscribeForm,
+    AppFooter
   },
 })
 export default class App extends Vue {
@@ -65,5 +71,6 @@ export default class App extends Vue {
 
   footer {
     background: #b9afb7;
+    height: 200px;
   }
 </style>
