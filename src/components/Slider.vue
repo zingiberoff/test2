@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       activeSlide: 0,
-      isAutoScroll: false,
+      isAutoScroll: true,
       slides: [
         {
           img: '/img/slide_1.jpg',
